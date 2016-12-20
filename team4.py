@@ -6,9 +6,9 @@
 #     move: A function that returns 'c' or 'b'
 ####
 
-team_name = 'The name the team gives to itself' # Only 10 chars displayed.
-strategy_name = 'The name the team gives to this strategy'
-strategy_description = 'How does this strategy decide?'
+team_name = 'We are #1' # Only 10 chars displayed.
+strategy_name = 'Robbie Rotten'
+strategy_description = 'Random first answer. Answers the same as what the opponent answered the most in the past'
     
 def move(my_history, their_history, my_score, their_score):
     ''' Arguments accepted: my_history, their_history are strings.
@@ -25,8 +25,27 @@ def move(my_history, their_history, my_score, their_score):
     
     # Analyze my_history and their_history and/or my_score and their_score.
     # Decide whether to return 'c' or 'b'.
+    import random
+    initialAnswer = ['c', 'b']
+    ourAnswer = random.choice(initialAnswer)
     
-    return 'c'
+    return initialAnswer
+    
+    answerCollude = 0
+    answerBetray = 0
+    x = 0
+    
+    for x in len[their_history]-1:
+        if (their_history[x] == 'c'):
+            answerCollude += 1
+        else:
+            answerBetray += 1
+        
+        if (answerCollude < answerBetray):
+            return 'b'
+        else:
+            return 'c'
+
 
     
 def test_move(my_history, their_history, my_score, their_score, result):
